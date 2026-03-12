@@ -1,4 +1,4 @@
-const API=https://69b31ef5e224ec066bdb7eea.mockapi.io/packages
+const API="https://69b31ef5e224ec066bdb7eea.mockapi.io/packages";
 
 const cards=document.getElementById("cards")
 const form=document.getElementById("form")
