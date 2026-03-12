@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Package Manager</title>
+<link rel="stylesheet" href="styles/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+<h1>🌍 Travel Package Manager</h1>
+
+<div class="filters">
+<input type="text" id="search" placeholder="Search destination...">
+<select id="countryFilter">
+<option value="">All Countries</option>
+<option>UAE</option>
+<option>France</option>
+<option>Italy</option>
+<option>Thailand</option>
+</select>
+</div>
+
+</header>
+
+<main>
+
+<section class="form-section">
+<h2>Add / Edit Package</h2>
+
+<form id="form">
+<input type="hidden" id="id">
+<input type="text" id="destination" placeholder="Destination" required>
+<input type="text" id="country" placeholder="Country" required>
+<input type="number" id="price" placeholder="Price" required>
+<input type="text" id="image" placeholder="Image URL">
+<button type="submit">Save Package</button>
+</form>
+</section>
+
+<section class="packages">
+<div id="cards"></div>
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 Tourism Dashboard</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

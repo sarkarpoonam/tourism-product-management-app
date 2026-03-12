@@ -1,0 +1,18 @@
+{
+  "packages": [
+    {
+      "id": 1,
+      "destination": "Dubai Desert Safari",
+      "country": "UAE",
+      "price": 120,
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    },
+    {
+      "id": 2,
+      "destination": "Paris City Tour",
+      "country": "France",
+      "price": 450,
+      "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
+    }
+  ]
+}

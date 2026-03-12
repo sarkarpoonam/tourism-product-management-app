@@ -1,0 +1,7 @@
+{
+  "name": "tourism-product-management-app",
+  "version": "1.0.0",
+  "scripts": {
+    "server": "json-server --watch db.json"
+  }
+}

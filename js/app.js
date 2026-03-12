@@ -1,0 +1,107 @@
+const API="http://localhost:3000/packages"
+
+const cards=document.getElementById("cards")
+const form=document.getElementById("form")
+const search=document.getElementById("search")
+const filter=document.getElementById("countryFilter")
+
+async function load(){
+
+let res=await fetch(API)
+let data=await res.json()
+
+const text=search.value.toLowerCase()
+const country=filter.value
+
+data=data.filter(p=>
+p.destination.toLowerCase().includes(text)
+)
+
+if(country){
+data=data.filter(p=>p.country===country)
+}
+
+cards.innerHTML=""
+
+data.forEach(p=>{
+
+const card=document.createElement("div")
+card.className="card"
+
+card.innerHTML=`
+<img src="${p.image}" />
+<div class="card-body">
+<h3>${p.destination}</h3>
+<p>${p.country}</p>
+<p>$${p.price}</p>
+<button onclick="edit(${p.id})">Edit</button>
+<button onclick="removePkg(${p.id})">Delete</button>
+</div>
+`
+
+cards.appendChild(card)
+
+})
+
+}
+
+search.oninput=load
+filter.onchange=load
+
+form.onsubmit=async e=>{
+
+e.preventDefault()
+
+const id=document.getElementById("id").value
+
+const pkg={
+destination:destination.value,
+country:country.value,
+price:price.value,
+image:image.value
+}
+
+if(id){
+
+await fetch(API+"/"+id,{
+method:"PUT",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(pkg)
+})
+
+}else{
+
+await fetch(API,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(pkg)
+})
+
+}
+
+form.reset()
+load()
+
+}
+
+async function edit(id){
+
+let res=await fetch(API+"/"+id)
+let d=await res.json()
+
+document.getElementById("id").value=id
+destination.value=d.destination
+country.value=d.country
+price.value=d.price
+image.value=d.image
+
+}
+
+async function removePkg(id){
+
+await fetch(API+"/"+id,{method:"DELETE"})
+load()
+
+}
+
+load()
